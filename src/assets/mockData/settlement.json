@@ -1,0 +1,179 @@
+{
+    "settleTxn": null,
+    "unSettleTxn": {
+        "partnerCode": "452",
+        "partnerName": "Mann",
+        "transactionList": [
+            {
+                "transactionId": "20200117163234887325",
+                "amount": 100.00,
+                "netAmount": 94.67,
+                "fee": 4.50,
+                "tax": 0.83,
+                "feeDatails": [
+                    {
+                        "id": 202,
+                        "feeName": "OF",
+                        "description": "operator fee",
+                        "feeType": "V",
+                        "feeValue": 4.50,
+                        "feeAmount": 4.50
+                    }
+                ],
+                "taxDetails": [
+                    {
+                        "id": 203,
+                        "taxName": "GST",
+                        "description": "Goods and services tax",
+                        "taxType": "V",
+                        "taxValue": 18.40,
+                        "taxAmount": 0.83
+                    }
+                ],
+                "txnDate": "2020-01-17",
+                "txnTime": "16:32:34",
+                "status": "S",
+                "mobileNo": "7776665555",
+                "userId": "802",
+                "userName": "xgukgh"
+            },
+            {
+                "transactionId": "20200117163234887325",
+                "amount": 100.00,
+                "netAmount": 94.67,
+                "fee": 4.50,
+                "tax": 0.83,
+                "feeDatails": [
+                    {
+                        "id": 202,
+                        "feeName": "OF",
+                        "description": "operator fee",
+                        "feeType": "V",
+                        "feeValue": 4.50,
+                        "feeAmount": 4.50
+                    }
+                ],
+                "taxDetails": [
+                    {
+                        "id": 203,
+                        "taxName": "GST",
+                        "description": "Goods and services tax",
+                        "taxType": "V",
+                        "taxValue": 18.40,
+                        "taxAmount": 0.83
+                    }
+                ],
+                "txnDate": "2020-01-17",
+                "txnTime": "16:32:34",
+                "status": "S",
+                "mobileNo": "7776665555",
+                "userId": "802",
+                "userName": "xgukgh"
+            },
+            {
+                "transactionId": "20200117163234887325",
+                "amount": 100.00,
+                "netAmount": 94.67,
+                "fee": 4.50,
+                "tax": 0.83,
+                "feeDatails": [
+                    {
+                        "id": 202,
+                        "feeName": "OF",
+                        "description": "operator fee",
+                        "feeType": "V",
+                        "feeValue": 4.50,
+                        "feeAmount": 4.50
+                    }
+                ],
+                "taxDetails": [
+                    {
+                        "id": 203,
+                        "taxName": "GST",
+                        "description": "Goods and services tax",
+                        "taxType": "V",
+                        "taxValue": 18.40,
+                        "taxAmount": 0.83
+                    }
+                ],
+                "txnDate": "2020-01-17",
+                "txnTime": "16:32:34",
+                "status": "S",
+                "mobileNo": "7776665555",
+                "userId": "802",
+                "userName": "xgukgh"
+            },
+            {
+                "transactionId": "20200117163234887325",
+                "amount": 100.00,
+                "netAmount": 94.67,
+                "fee": 4.50,
+                "tax": 0.83,
+                "feeDatails": [
+                    {
+                        "id": 202,
+                        "feeName": "OF",
+                        "description": "operator fee",
+                        "feeType": "V",
+                        "feeValue": 4.50,
+                        "feeAmount": 4.50
+                    }
+                ],
+                "taxDetails": [
+                    {
+                        "id": 203,
+                        "taxName": "GST",
+                        "description": "Goods and services tax",
+                        "taxType": "V",
+                        "taxValue": 18.40,
+                        "taxAmount": 0.83
+                    }
+                ],
+                "txnDate": "2020-01-17",
+                "txnTime": "16:32:34",
+                "status": "S",
+                "mobileNo": "7776665555",
+                "userId": "802",
+                "userName": "xgukgh"
+            },
+            {
+                "transactionId": "20200117163234887325",
+                "amount": 100.00,
+                "netAmount": 94.67,
+                "fee": 4.50,
+                "tax": 0.83,
+                "feeDatails": [
+                    {
+                        "id": 202,
+                        "feeName": "OF",
+                        "description": "operator fee",
+                        "feeType": "V",
+                        "feeValue": 4.50,
+                        "feeAmount": 4.50
+                    }
+                ],
+                "taxDetails": [
+                    {
+                        "id": 203,
+                        "taxName": "GST",
+                        "description": "Goods and services tax",
+                        "taxType": "V",
+                        "taxValue": 18.40,
+                        "taxAmount": 0.83
+                    }
+                ],
+                "txnDate": "2020-01-17",
+                "txnTime": "16:32:34",
+                "status": "S",
+                "mobileNo": "7776665555",
+                "userId": "802",
+                "userName": "xgukgh"
+            }
+        ],
+        "totalFee": 4.50,
+        "totalTax": 0.83,
+        "totalAmount": 100.00,
+        "totalNetAmount": 94.67,
+        "totalTxn": 1
+    }
+}

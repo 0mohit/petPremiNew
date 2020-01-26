@@ -1,0 +1,69 @@
+<div class="pet-modal" id="model-body" *ngIf="isClose" (click)="bodyClick($event)">
+  <div class="pet-modal-content animated"
+    [ngClass]="{'slideInRight': isDisplayForm, 'slideOutRight':!isDisplayForm }"
+    [style.width]="increaseWidth ? '600px' : '500px'">
+    <div class="pet-modal-title">
+      <div class="title-text">Add Terminal</div>
+      <mat-icon data-dismiss="modal" class="mr-3 pointer" (click)="cancel()">close</mat-icon>
+    </div>
+    <div class="pet-modal-body">
+      <div class="pet-modal-body-inner">
+        <form [formGroup]="ternimalForm">
+          <mat-form-field class="w-50">
+            <input matInput placeholder="Reference Number" class="text-uppercase" formControlName="refNo" required>
+          </mat-form-field>
+          <mat-form-field class="w-50 pl-2">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" required>
+              <mat-option [value]="'a'">
+                Active
+              </mat-option>
+              <mat-option [value]="'I'">
+                Inactive
+              </mat-option>
+              <mat-option [value]="'P'">
+                Pending
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <hr>
+          <h4 class="m-0">Address</h4>
+
+          <form [formGroup]="ternimalForm.get('address')">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Address1" class="text-uppercase" formControlName="address1" required>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Address2" class="text-uppercase" formControlName="address2" required>
+            </mat-form-field>
+
+            <mat-form-field class="w-100">
+              <input matInput placeholder="City" formControlName="city" class="text-uppercase" required>
+            </mat-form-field>
+
+            <mat-form-field class="w-50">
+              <mat-label>Select State</mat-label>
+              <mat-select formControlName="state" required>
+                <mat-option [value]="'delhi'">
+                  Delhi
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="w-50 pl-2">
+              <input matInput type="text" (keypress)="commonService.restrictOnlyNumeric($event)" minlength="6"
+                maxlength="6" placeholder="Pincode" formControlName="pincode" required>
+            </mat-form-field>
+
+          </form>
+        </form>
+      </div>
+    </div>
+
+    <div class="pet-modal-footer">
+      <button mat-raised-button color="primary" type="button" [disabled]="!ternimalForm.valid"
+        (click)="sendInvoice()">SEND</button>
+      <button mat-raised-button type="button" color="want" (click)="cancel()">CANCEL</button>
+    </div>
+  </div>
+</div>

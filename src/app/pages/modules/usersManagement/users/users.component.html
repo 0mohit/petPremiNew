@@ -1,0 +1,137 @@
+<div>
+
+  <!-- <mat-drawer-container class="example-container">
+    <mat-drawer #sideNav mode="side" opened="false" [position]="'end'">
+      Drawer content
+    </mat-drawer>
+    <mat-drawer-content>
+   
+    </mat-drawer-content>
+  </mat-drawer-container> -->
+
+  <div class="container">
+
+
+    <mat-card class="search filter">
+      <form [formGroup]="searchUserForm">
+
+        <div class="row pl-3 pr-3">
+          <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+            <input matInput formControlName="firstName" placeholder="UserName">
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+            <input matInput formControlName="emailId" placeholder="Email">
+          </div>
+
+          <div class="col-lg-2 col-md-2  col-sm-12 p-0">
+            <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+              <mat-label> Role </mat-label>
+              <mat-select formControlName='roles' multiple>
+                <mat-option *ngFor="let item of rolesDropdownList" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!--  <div class="col-lg-2 col-md-2  col-sm-12 p-0">
+            <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+              <mat-label> Partner Type </mat-label>
+              <mat-select formControlName='pType' multiple>
+                <mat-option *ngFor="let item of partnerTypeDropdownList" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>-->
+
+          <div class="col-lg-2 col-md-2  col-sm-12 p-0">
+            <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+              <mat-label> Partner </mat-label>
+              <mat-select formControlName='partnerName' multiple>
+                <mat-option *ngFor="let item of partnerDropdownList" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-2 col-md-2  col-sm-12 p-0">
+            <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+              <mat-label> Department </mat-label>
+              <mat-select formControlName='dept' multiple>
+                <mat-option *ngFor="let item of deptDropdownList" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+            <button color="primary" class="filter-button mr-3" (click)="searchUser()" mat-raised-button
+              id="submit">Search</button>
+          </div>
+          <!-- <div class="col-lg-2 col-md-2 col-sm-12 p-0 "> -->
+          <!-- <button mat-raised-button class="filter-button mr-3" color="warn" (click)="resetUserForm()">Reset</button> -->
+          <!-- </div> -->
+
+        </div>
+
+      </form>
+    </mat-card>
+
+    <div class="text-right">
+      <button mat-raised-button class="mt-4 btn-round yellow" (click)="addUser('')"> Create
+        <i class="material-icons">
+          add
+        </i></button>
+    </div>
+
+    <div class="example-table-container mt-4">
+
+      <table mat-table [dataSource]="tableData" class="example-table" matSort>
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{displayedColumnsName[column]}}</th>
+          <td mat-cell class="text-left" *matCellDef="let row">
+            <span *ngIf="column === 'action'">
+              <span [matMenuTriggerFor]="menu" class="actions_btn"><i class="fa fa-ellipsis-h"></i></span>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="edit(row)">Edit</button>
+                <button mat-menu-item (click)="delete(row)">Delete</button>
+              </mat-menu>
+            </span>
+            <span *ngIf="column === 'userId'">
+              {{row[column] != null ? row[column] : '--'}}
+            </span>
+            <span *ngIf="column === 'firstName'">
+              {{row[column] != null && row[column] != '' ? row[column] : '--'}}
+            </span>
+            <span *ngIf="column === 'emailId'">
+              {{row[column] != null ? row[column] : '--'}}
+            </span>
+            <span *ngIf="column === 'partnerName'">
+              {{row[column] != null ? row[column] : '--'}}
+            </span>
+            <span *ngIf="column === 'roles'">
+              {{row[column] != null && row[column] != '' ? row[column] : '--'}}
+            </span>
+            <span *ngIf="column === 'departments'">
+              {{row[column] != null && row[column] != ''  ? row[column] : '--'}}
+            </span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    </div>
+  </div>
+
+</div>
+<app-create-model-user [isClose]="isClose" [data]="selectedTransactionData" [isDisplayForm]="isDisplayForm"
+  (cancelEvent)="addUser($event)">
+</app-create-model-user>

@@ -1,0 +1,20 @@
+<div class="pet-modal" id="model-body" *ngIf="isClose" (click)="bodyClick($event)">
+    <div class="pet-modal-content animated"
+      [ngClass]="{'slideInRight': isDisplayForm, 'slideOutRight':!isDisplayForm }" [style.width]="increaseWidth ? '600px' : '500px'">
+      <div class="pet-modal-title">
+        <div class="title-text">Create User</div>
+        <mat-icon data-dismiss="modal" class="mr-3 pointer" (click)="cancel()">close</mat-icon>
+      </div>
+      <div class="pet-modal-body">
+        <div class="pet-modal-body-inner">
+       sadass
+        </div>
+      </div>
+  
+      <div class="pet-modal-footer">
+        <!-- <button mat-raised-button color="primary" (click)="cancel()">SAVE</button> -->
+        <button mat-raised-button color="want" (click)="cancel()">CANCEL</button>
+      </div>
+    </div>
+  </div>
+  

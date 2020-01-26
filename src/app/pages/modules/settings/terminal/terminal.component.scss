@@ -1,0 +1,108 @@
+@import '../../../../colors.scss';
+
+.filter-icon {
+  min-height: 73.5px;
+}
+
+.action-btns {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Structure */
+.table-container {
+  width: 100%;
+  position: relative;
+  border-top: 1px solid #dedede;
+
+  tr {
+    height: 30px;
+  }
+
+  td {
+    font-size: 12px;
+    color: $textGray;
+  }
+
+  .amount-container {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-around;
+    color: rgb(110, 108, 108);
+
+    mat-icon {
+      font-size: 1.2rem;
+      height: 20px;
+      width: 20px;
+    }
+
+    mat-chip {
+      padding: 0px 4px;
+      background-color: rgb(136, 27, 27);
+      color: #fff;
+      font-size: 12px;
+      max-height: 24px !important;
+      min-height: 24px !important;
+    }
+
+    &.failed {
+      mat-chip {
+        background-color: rgb(136, 27, 27);
+      }
+    }
+
+    &.success {
+      mat-chip {
+        background-color: $textYellow;
+      }
+    }
+  }
+}
+
+.example-table-container {
+  // height: calc(100vh - 220px);
+  position: relative;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Column Widths */
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}
+
+.action-icons {
+
+  mat-icon {
+    color: #b6b6b6;
+    cursor: pointer;
+
+    &:hover {
+      color: $textYellow;
+    }
+
+  }
+}

@@ -1,0 +1,51 @@
+<div class="mainContainer sidemenu-open" id="main-container">
+  <div class="sideMenuContainer" [id]="isMobileMenuOpen ? 'mobile-menu': ''">
+    <app-side-menu></app-side-menu>
+  </div>
+  <div class="content-container">
+    <div class=" text-right">
+      <!-- digi-navbar -->
+      <!-- <div>
+        <mat-icon class="ml-3 menu-toggeler pointer" (click)="menuToggel()">reorder</mat-icon>
+      </div> -->
+      <!-- <div> -->
+        <!-- <div [matMenuTriggerFor]="menu">
+          <img src="./assets/images/avatar.png" class="mr-3 round avatar-image" />
+        </div> -->
+        <!-- <mat-menu #menu="matMenu" [class]="'profileMenu'"> -->
+
+          <!-- <div class="profile-menu-row">
+            <img src="./assets/images/avatar.png" class="mr-3 round avatar-image" />
+            <span> mohit</span>
+          </div> -->
+          <!-- <div class="profile-menu-row">
+            <span class="title">
+              <mat-icon>smartphone</mat-icon>
+            </span>
+            <span class="description">436832686842</span>
+          </div> -->
+          <!-- <div class="profile-menu-row"> -->
+            <!-- <span class="title">
+              <mat-icon>email</mat-icon>
+            </span> -->
+            <!-- <span class="description"> mohit@gmail.com</span> -->
+          <!-- </div> -->
+          <!-- <div class="profile-menu-row border-bottom-0"> -->
+            <!-- <button mat-raised-button class="mr-4" color="primary" (click)="goToProfile()">Change Password</button> -->
+            <button class="m-2 buttonBackG" mat-raised-button  (click)="logout()">Logout</button>
+          <!-- </div> -->
+        <!-- </mat-menu> -->
+      <!-- </div> -->
+
+    <!-- </div> -->
+    <div class="m-2">
+      <div style="min-height: calc(100vh - 110px);">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="copyright text-center mt-3 mb-3 w-100">
+        <!-- Copyright © {{year}} pet
+        Powered by Mann India Technologies. -->
+      </div>
+    </div>
+  </div>
+</div>

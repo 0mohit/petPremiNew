@@ -1,0 +1,51 @@
+<div class="fs-modal" id="FSModal1" (click)="cancel()">
+    <div class="fs-modal-content animated"
+        [ngClass]="{'slideInRight': isSwap,'slideOutRight': !isSwap,'width800': expend , 'width550' :isDisplayEditForm }" >
+
+
+        <div class="fs-modal-title">
+             <!-- <div class="title-icon badge-lg badge-purple"><i class="fa fa-plus"></i></div> -->
+            <div class="title-text">Create User</div>
+            <!-- <div class="close-btn" data-dismiss="modal" (click)="cancel()"><i class="fa fa-times"></i></div> -->
+        </div>
+
+        <div class="fs-modal-body">
+            <!-- <div class="alert alert-success alert-dismissible" *ngIf="successMsg">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> Privilege updated successfully.
+        </div> -->
+            <div class="fs-modal-body-inner">
+                <!-- <form> -->
+                    <div class="row pl-3 pr-3">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 p-0">
+                            <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                                <mat-label>Test</mat-label>
+                                <input matInput>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 p-0">
+                        
+                        </div>
+
+                        <div class="col-lg-3 col-md-6  col-sm-12 p-0">
+                       
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-lg btn-primary edit-btn"
+                                    (click)="submit()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
+
+        <!-- <div class="fs-modal-footer">
+            <button type="button" class="btn btn-lg btn-default border" (click)="cancel()">CANCEL</button>
+        </div> -->
+    </div>
+</div>

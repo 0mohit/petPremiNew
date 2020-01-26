@@ -1,0 +1,103 @@
+<div class="sideMenu">
+  <div>
+    <div class="logo ml-2" style="justify-content: left !important;">
+      <!-- <img src="./assets/images/logo.png" class="large-logo" /> -->
+      <mat-icon [ngClass]="{'hide':isMenuOpen}" style="color: black;" (click)="menuToggel()">reorder</mat-icon>
+      <mat-icon [ngClass]="{'hide':!isMenuOpen}" style="color: black;" (click)="menuToggel()">keyboard_backspace</mat-icon>
+      <!-- <img src="./assets/images/favicon.ico" class="small-logo mt-2" /> -->
+    </div>
+    <div class="menu-list">
+      <div class="menu" [ngClass]="{'center': !isMenuOpen}" routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon [ngClass]="iconColor">bar_chart</mat-icon>
+        <span class="title">Dashboard</span>
+      </div>
+      <div class="menu" [ngClass]="{'center': !isMenuOpen}" routerLink="/appointments" routerLinkActive="active">
+        <mat-icon [ngClass]="iconColor">calendar_today</mat-icon>
+        <span class="title"> Appointments </span>
+      </div>
+      <div class="menu" [ngClass]="{'center': !isMenuOpen}" routerLink="/customers" routerLinkActive="active">
+        <mat-icon [ngClass]="iconColor">people</mat-icon>
+        <span class="title">Customers</span>
+      </div>
+      <div class="menu" [ngClass]="{'center': !isMenuOpen}" routerLink="/notifications" routerLinkActive="active">
+        <mat-icon [ngClass]="iconColor">message</mat-icon>
+        <span class="title"> Notifications </span>
+      </div>
+      <div class="menu" [ngClass]="{'center': !isMenuOpen}" routerLink="/tasks" routerLinkActive="active">
+        <mat-icon [ngClass]="iconColor">post_add</mat-icon>
+        <span class="title"> Tasks </span>
+      </div>
+      <div class="menu" [ngClass]="{'center': !isMenuOpen}" routerLink="/pets" routerLinkActive="active">
+        <mat-icon [ngClass]="iconColor">attach_money</mat-icon>
+        <span class="title"> Pets </span>
+      </div>
+
+      <div class="menu has-sub-menu" style="flex-direction: column;" [ngClass]="{'submenu-opened': isSubMenuOpen}">
+        <div style="display: flex; justify-content: space-between;" [ngClass]="{'center': !isMenuOpen}" (click)="toggleSubMenu()">
+          <div>
+            <mat-icon [ngClass]="iconColor">account_box</mat-icon>
+            <span class="title"> User Management</span>
+          </div>
+          <div>
+            <mat-icon [ngClass]="iconColor" class="float-right digi-arrow">arrow_forward_ios</mat-icon>
+          </div>
+        </div>
+        <div class="sub-menu-container">
+          <div class="sub-menu" routerLink="/user-management/user" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">lock</mat-icon>
+            <span class="title"> User </span>
+          </div>
+          <div class="sub-menu" routerLink="/user-management/feature" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">lock</mat-icon>
+            <span class="title"> Feature </span>
+          </div>
+          <div class="sub-menu" routerLink="/user-management/functionality" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">lock</mat-icon>
+            <span class="title"> Functionality </span>
+          </div>
+          <div class="sub-menu" routerLink="/user-management/role" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">lock</mat-icon>
+            <span class="title"> Role </span>
+          </div>
+          <div class="sub-menu" routerLink="/user-management/privilege" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">developer_board</mat-icon>
+            <span class="title"> privilege </span>
+          </div>
+        </div>
+      </div>
+      <div class="menu has-sub-menu" style="flex-direction: column;" [ngClass]="{'submenu-opened': isSubMenuOpen}">
+        <div style="display: flex; justify-content: space-between;" [ngClass]="{'center': !isMenuOpen}" (click)="toggleSubMenu()">
+          <div>
+            <mat-icon [ngClass]="iconColor">settings_applications</mat-icon>
+            <span class="title">Settings</span>
+          </div>
+          <div>
+            <mat-icon [ngClass]="iconColor" class="float-right digi-arrow">arrow_forward_ios</mat-icon>
+          </div>
+        </div>
+        <div class="sub-menu-container">
+          <div class="sub-menu">
+            <mat-icon  [ngClass]="iconColor">person</mat-icon>
+            <span class="title"> Profile </span>
+          </div>
+          <!-- <div class="sub-menu" routerLink="/settings/business-details" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">business_center</mat-icon>
+            <span class="title"> Business Details </span>
+          </div>
+          <div class="sub-menu" routerLink="/settings/bank-account" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">account_balance</mat-icon>
+            <span class="title"> Bank Account </span>
+          </div>
+          <div class="sub-menu" routerLink="/terminal" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">developer_board</mat-icon>
+            <span class="title"> Terminals </span>
+          </div> -->
+          <!-- <div class="sub-menu" routerLink="/change-password" routerLinkActive="active">
+            <mat-icon [ngClass]="iconColor">lock</mat-icon>
+            <span class="title"> Change Password </span>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

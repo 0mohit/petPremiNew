@@ -1,0 +1,92 @@
+@import '../colors.scss';
+
+.mainContainer {
+  display: flex;
+  flex: 1;
+
+  .sideMenuContainer {
+    width: 60px;
+    transition: all 0.5s ease;
+    margin: 5px;
+  }
+  .buttonBackG{
+    background: $textYellow;
+  }
+
+  .content-container {
+    width: 100%;
+
+    background: $contentBackGround;
+
+    .digi-navbar {
+      height: 54px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+      .menu-toggeler {
+        display: none;
+      }
+
+      .avatar-image {
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+::ng-deep .profileMenu {
+  display: flex;
+  padding: 0px 8px 8px 8px;
+
+  .mat-menu-content {
+    padding-top: 0px !important;
+  }
+
+  .profile-menu-row {
+    margin-top: .5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: .5px solid #e2e2e2;
+    padding-bottom: 4px;
+
+
+    mat-icon {
+      margin: 8px;
+    }
+  }
+
+  .avatar-image {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 767px) {
+  .sideMenuContainer {
+    position: fixed;
+    // display: none !important;
+    overflow: hidden;
+    width: 0 !important;
+    transition: all 0.5s ease;
+    margin-top: 56px;
+  }
+
+  .menu-toggeler {
+    display: block !important;
+  }
+
+  #mobile-menu {
+    // display: block !important;
+    z-index: 101;
+    width: 250px !important;
+    transition: all 0.5s ease;
+    margin-top: 56px;
+  }
+}

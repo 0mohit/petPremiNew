@@ -1,0 +1,172 @@
+@import "../../../colors.scss";
+
+.sideMenu {
+  min-height: 100vh;
+  height: 100%;
+  background: $sidemenuBackGround;
+  -webkit-box-shadow: -1px 0px 8px 1px $sidemenuBackGround;
+  -moz-box-shadow: -1px 0px 8px 1px $sidemenuBackGround;
+  box-shadow: -1px 0px 8px 1px $sidemenuBackGround;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .logo {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 54px;
+    margin-top: 1rem;
+
+    .small-logo {
+      width: 20px;
+      transition: all 0.5s ease;
+    }
+
+    .large-logo {
+      width: 0px;
+      transition: all 0.5s ease;
+    }
+
+    .mat-icon {
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        color: $textYellow;
+        border: #fff;
+      }
+    }
+  }
+  .center {
+    justify-content: center !important;
+  }
+  .hide{
+    display: none;
+  }
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    .menu {
+      display: flex;
+      flex-direction: row;
+      padding: 12px;
+      color: $textDefault;
+      cursor: pointer;
+      border-bottom: 0.5px solid #fff;
+      outline: none;
+      align-items: center;
+      font-size: 14px;
+
+      &.active {
+        background: $textYellow;
+        color: $textDefault;
+        border-radius: 5px;
+      }
+      .mat-icon {
+        color: rgb(163, 163, 163);
+        cursor: pointer;
+
+        &:hover {
+          color: $textYellow;
+          border: $textYellow;
+        }
+      }
+      .icon-color {
+        color: $textGray;
+      }
+      .digi-arrow {
+        display: none;
+        transform: rotate(0deg);
+        transition: all 0.5s ease;
+      }
+
+      .title {
+        margin-left: 1em;
+        display: none;
+        transition: all 0.5s ease;
+        vertical-align: super;
+      }
+
+      &:hover:not(.has-sub-menu) {
+        background: $whiteBackGround;
+        color: $textYellow;
+      }
+
+      &.has-sub-menu {
+        align-items: unset;
+      }
+
+      .sub-menu-container {
+        margin-left: 2.2rem;
+        height: 0px;
+        overflow: hidden;
+        transition: all 0.5s ease;
+
+        .sub-menu {
+          border-bottom: 0.5px solid #fff;
+          padding: 4px 0;
+          display: flex;
+          align-items: center;
+          font-size: 12px;
+          outline: none;
+
+          .mat-icon {
+            font-size: 18px;
+            margin-left: 4px;
+            height: unset;
+            width: unset;
+          }
+
+          &:hover {
+            background: $whiteBackGround;
+            color: $textYellow;
+          }
+
+          &.active {
+            background: $textYellow;
+            color: $textDefault;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      &.submenu-opened {
+        .digi-arrow {
+          transform: rotate(90deg);
+          transition: all 0.5s ease;
+        }
+
+        .sub-menu-container {
+          height: 130px;
+          transition: all 0.5s ease;
+        }
+      }
+    }
+  }
+
+  .menu-footer {
+    color: #fff;
+    font-size: 0.6rem;
+    margin: 1em 10%;
+    word-break: break-all;
+    transition: all 0.5s ease;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 767px) {
+  .sideMenu {
+    .logo {
+      display: none;
+    }
+
+    .menu-list {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row shadow">
+    <div class="col action-btns text-right" style="justify-content: flex-end;">
+      <button mat-raised-button class="mt-3" (click)="addTerminal()">
+        <mat-icon>add</mat-icon>
+        New
+      </button>
+    </div>
+
+    <div class="table-container mt-3">
+      <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      </div>
+
+      <div class="example-table-container">
+
+        <table mat-table [dataSource]="data" class="example-table" matSort matSortDirection="desc">
+          <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{columnNames[column]}}</th>
+            <td mat-cell *matCellDef="let row">
+              {{row[column] == 'A' ? 'Active' : row[column] == 'I' ? 'Inactive' : row[column]}}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+      <mat-paginator [length]="resultsLength" [pageSize]="10"></mat-paginator>
+    </div>
+
+  </div>
+</div>
+<app-add-terminal [isClose]="isClose" [isDisplayForm]="isDisplayForm"
+  (cancelEvent)="addTerminal()">
+</app-add-terminal>

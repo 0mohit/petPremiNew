@@ -1,0 +1,46 @@
+<mat-card class="m-4">
+  <form [formGroup]="bankAccountDetailsFormGroup">
+    <ng-template matStepLabel>Bank Account Details</ng-template>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Business Name" formControlName="businessName" required>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <mat-form-field class="w-100">
+          <input matInput type="text" maxlength="16" (keypress)="commonService.restrictOnlyNumeric($event)"
+            placeholder="Account Number" formControlName="accountNumber" required>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Bank Name</mat-label>
+          <mat-select formControlName="bankName" required>
+            <mat-option *ngFor="let item of commonService.banks" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="IFSC Code" formControlName="IFSCCode" required>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Account Type</mat-label>
+          <mat-select formControlName="accountType" required>
+            <mat-option [value]="'saving'">
+              Saving
+            </mat-option>
+            <mat-option [value]="'current'">
+              Current
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-card>

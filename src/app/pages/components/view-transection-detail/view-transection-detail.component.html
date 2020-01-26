@@ -1,0 +1,96 @@
+<div class="pet-modal" id="model-body" *ngIf="isClose" (click)="bodyClick($event)">
+  <div class="pet-modal-content animated"
+    [ngClass]="{'slideInRight': isDisplayForm, 'slideOutRight':!isDisplayForm }" [style.width]="increaseWidth ? '600px' : '500px'">
+    <div class="pet-modal-title">
+      <div class="title-text">Transaction Detail</div>
+      <mat-icon data-dismiss="modal" class="mr-3 pointer" (click)="cancel()">close</mat-icon>
+    </div>
+    <div class="pet-modal-body">
+      <div class="pet-modal-body-inner">
+        <table class="table table-sm">
+          <tr>
+            <td class="w-50">Company Name :</td>
+            <td class="w-50">{{transectionData?.txnDescription}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Accepted By :</td>
+            <td class="w-50">{{transectionData?.toPartner?.partnerName}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Transaction Type :</td>
+            <td class="w-50">{{transectionData?.transactionType?.transactionName}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Sub Transaction Type :</td>
+            <td class="w-50">{{transectionData?.subTransactionType?.subTransactionName}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Transaction Id :</td>
+            <td class="w-50">{{transectionData?.transactionId}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Auth Reference No :</td>
+            <td class="w-50">{{transectionData?.aggregatorReferenceNumber}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Customer Mobile Number :</td>
+            <td class="w-50">{{transectionData?.customerUserId?.phone}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Customer Name :</td>
+            <td class="w-50">{{transectionData?.customerUserId?.firstName}} {{transectionData?.customerUserId?.lastName}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Card Number :</td>
+            <td class="w-50">XXXX</td>
+          </tr>
+          <tr>
+            <td class="w-50">Transaction Description :</td>
+            <td class="w-50">{{transectionData?.txnDescription}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Amount :</td>
+            <td class="w-50">{{transectionData?.amount}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Transaction Fees :</td>
+            <td class="w-50">5</td>
+          </tr>
+          <tr>
+            <td class="w-50">Service Tax :</td>
+            <td class="w-50">2.24</td>
+          </tr>
+          <tr>
+            <td class="w-50">SB Cess Tax :</td>
+            <td class="w-50">0.08</td>
+          </tr>
+          <tr>
+            <td class="w-50">KK Cess Tax :</td>
+            <td class="w-50">19.039999999999999</td>
+          </tr>
+          <tr>
+            <td class="w-50">Fixed Tax :</td>
+            <td class="w-50">11</td>
+          </tr>
+          <tr>
+            <td class="w-50">Date/Time :</td>
+            <td class="w-50">{{transectionData?.date | date: 'full'}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Status :</td>
+            <td class="w-50">{{transectionData?.status =='F' ?  'Failed' : 'Success'}}</td>
+          </tr>
+          <tr>
+            <td class="w-50">Approval Date :</td>
+            <td class="w-50">-</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="pet-modal-footer">
+      <!-- <button mat-raised-button color="primary" (click)="cancel()">SAVE</button> -->
+      <button mat-raised-button color="want" (click)="cancel()">CANCEL</button>
+    </div>
+  </div>
+</div>

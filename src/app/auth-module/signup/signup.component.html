@@ -1,0 +1,538 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="digiM-signup-main-container">
+        <div class="top-container">
+          <img src="./assets/images/logo.svg" alt="DigiPe" class="logo">
+          <span class="title">Sign up</span>
+          <span>
+            <span class="text-gray">Already have account? </span> <a [routerLink]="['/auth/login']"> Sign In</a>
+          </span>
+        </div>
+        <div class="formContainer mt-2" *ngIf="!successSignup">
+          <mat-horizontal-stepper [linear]="true" #stepper>
+            <!-- <ng-template matStepperIcon="edit">
+              <mat-icon>insert_drive_file</mat-icon>
+            </ng-template> -->
+            <!-- <ng-template matStepperIcon="done">
+              <mat-icon>insert_drive_file</mat-icon>
+            </ng-template> -->
+            <mat-step [stepControl]="basicDetailsFormGroup">
+              <form [formGroup]="basicDetailsFormGroup">
+                <ng-template matStepLabel>Basic Details</ng-template>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <mat-form-field style="width: 10%;">
+                      <mat-label>Title</mat-label>
+                      <mat-select formControlName="title" required>
+                        <mat-option [value]="'Mr.'">
+                          Mr.
+                        </mat-option>
+                        <mat-option [value]="'Ms.'">
+                          Ms.
+                        </mat-option>
+                        <mat-option [value]="'Mrs.'">
+                          Mrs.
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="width: 90%" class="pl-2">
+                      <input matInput placeholder="First Name" formControlName="fName" class="text-uppercase" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Last Name" formControlName="lName" class="text-uppercase" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="w-25">
+                      <input matInput placeholder="Mobile Number" formControlName="mobile" maxlength="10"
+                        (keypress)="restrictOnlyNumeric($event)" required>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" class="ml-1"
+                      [disabled]="!basicDetailsFormGroup.controls.mobile.valid && (!isGeneratedOTP || isVerifiedOTP)"
+                      type="button" (click)="generateOTP()">
+                      {{!isGeneratedOTP ? 'Send' : 'Resend'}} OTP</button>
+                    <mat-form-field class="w-25 ml-4" *ngIf="isGeneratedOTP">
+                      <input matInput placeholder="OTP" formControlName="otp" minlength="6" maxlength="6"
+                        (keypress)="restrictOnlyNumeric($event)" required (blur)="verifyOtp()">
+                      <mat-icon matSuffix style="color: rgb(3, 110, 3)"
+                        *ngIf="basicDetailsFormGroup.controls.otp.valid && isVerifiedOTP">check</mat-icon>
+                    </mat-form-field>
+                    <!-- <button type="button" class="ml-1" mat-raised-button color="primary" *ngIf="isGeneratedOTP"
+                      [disabled]="!basicDetailsFormGroup.controls.otp.valid" (click)="verifyOtp()">Verify
+                      OTP</button> -->
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Email Address" formControlName="email" class="text-uppercase"
+                        required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="w-100">
+                      <input matInput type="password" placeholder="Password" formControlName="password" required>
+                      <mat-hint>Min 8 characters, at least one Lowercase, Uppercase, Numbers and a Special character
+                      </mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="w-100">
+                      <input matInput type="password" placeholder="Confirm Password" formControlName="cPassword"
+                        required>
+                      <mat-error *ngIf="basicDetailsFormGroup.controls.cPassword.errors?.mustMatch">Password doesn't
+                        match
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button mat-raised-button color="primary" [disabled]="!basicDetailsFormGroup.valid || !isVerifiedOTP"
+                    matStepperNext>Continue</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="natureOfBusinessFormGroup">
+              <form [formGroup]="natureOfBusinessFormGroup">
+                <ng-template matStepLabel>Nature Of Business</ng-template>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Business Category</mat-label>
+                      <mat-select formControlName="businessCategory" required>
+                        <mat-option *ngFor="let item of commonService.businessCategory" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Business Sub Category</mat-label>
+                      <mat-select formControlName="businessSubCategory" required>
+                        <mat-option *ngFor="let item of commonService.subBusinessCategory" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Min Estimated Transaction Value" type="number"
+                        formControlName="minEstimatedTransactionValue" min="2" required>
+                      <mat-hint>Minimun Value Should be 2</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Max Estimated Transaction Value" type="number"
+                        formControlName="maxEstimatedTransactionValue" max="50000" required>
+                      <mat-hint>Maximum Value Should be 50000</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <textarea col="4" matInput placeholder="Product/Services Description"
+                        formControlName="productServicesDescription" required></textarea>
+                    </mat-form-field>
+                  </div>
+                  <!-- <div class="col-sm-12 col-md-6 mt-4">
+                    <mat-checkbox color="primary" class="w-100" formControlName="provideAgentDetails">Provide Agent
+                      Details ?
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Agent Id" formControlName="agentId" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Partner Id" formControlName="partnerId" required>
+                    </mat-form-field>
+                  </div> -->
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <button mat-raised-button matStepperPrevious type="button">Back</button>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <button mat-raised-button color="primary" [disabled]="!natureOfBusinessFormGroup.valid"
+                      matStepperNext>Continue</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="businessDetailsFormGroup">
+              <form [formGroup]="businessDetailsFormGroup">
+                <ng-template matStepLabel>Business Details</ng-template>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Select Business Entity</mat-label>
+                      <mat-select formControlName="businessEntity" required>
+                        <mat-option *ngFor="let item of commonService.businessEntity" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Select Role</mat-label>
+                      <mat-select formControlName="role" required>
+                        <mat-option *ngFor="let item of commonService.roles" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Business Name" formControlName="businessName"
+                        (blur)="businessNameBlur()" required>
+                      <mat-hint>Business name should be same as Bank Account name</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12">
+                    <hr>
+                    <p class="title m-0">Registered Address</p>
+                  </div>
+                  <form [formGroup]="businessDetailsFormGroup.get('registeredAddress')" class="col-sm-12">
+                    <div class="row">
+
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100">
+                          <input matInput placeholder="Address" formControlName="address" required>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100">
+                          <input matInput placeholder="City" formControlName="city" class="text-uppercase" required>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100">
+                          <mat-label>Select State</mat-label>
+                          <mat-select formControlName="state" required>
+                            <mat-option [value]="'delhi'">
+                              Delhi
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-75 pr-2">
+                          <input matInput type="text" (keypress)="restrictOnlyNumeric($event)" minlength="6"
+                            maxlength="6" placeholder="Pincode" formControlName="pincode" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                          <input matInput placeholder="Country" formControlName="country" required>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="col-sm-12">
+                    <hr>
+                    <p class="title m-0 float-left">Operating Address</p>
+                    <mat-checkbox color="primary" class="float-right"
+                      [disabled]="!businessDetailsFormGroup.controls.registeredAddress.valid"
+                      (change)="sameAsAbove($event)">Same as above</mat-checkbox>
+                  </div>
+                  <form [formGroup]="businessDetailsFormGroup.get('operatingAddress')" class="col-sm-12">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100">
+                          <input matInput placeholder="Address" formControlName="address" required>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100">
+                          <input matInput placeholder="City" formControlName="city" class="text-uppercase" required>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-100">
+                          <mat-label>Select State</mat-label>
+                          <mat-select formControlName="state" required>
+                            <mat-option [value]="'delhi'">
+                              Delhi
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12 col-md-6">
+                        <mat-form-field class="w-75 pr-2">
+                          <input matInput placeholder="Pincode" (keypress)="restrictOnlyNumeric($event)" minlength="6"
+                            maxlength="6" formControlName="pincode" required>
+                        </mat-form-field>
+                        <mat-form-field class="w-25">
+                          <input matInput placeholder="Country" formControlName="country" required>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="col-sm-12">
+                    <hr>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-25">
+                      <input matInput type="number" placeholder="STD Code" formControlName="STDCode" required>
+                    </mat-form-field>
+                    <mat-form-field class="w-75 pl-2">
+                      <input matInput type="number" placeholder="Landline Number" formControlName="landlineNumber"
+                        required>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="PAN Card" class="text-uppercase" minlength="10" maxlength="10" formControlName="PAN"
+                        required>
+                    </mat-form-field>
+                  </div>
+                  <!-- <div class="col-sm-12 col-md-6">
+                    <section class="w-100">
+                      <label class="mr-2">Do You Have Aadhaar Card:</label>
+                      <mat-radio-group formControlName="haveAadhaarCard">
+                        <mat-radio-button color="primary" class="mr-2" value="yes">Yes</mat-radio-button>
+                        <mat-radio-button color="primary" class="mr-2" value="no">No</mat-radio-button>
+                      </mat-radio-group>
+                    </section>
+                  </div> -->
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Select Address Proof</mat-label>
+                      <mat-select formControlName="addressProof" required>
+                        <mat-option *ngFor="let item of commonService.identityProofAddressProof" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Select Identity Proof</mat-label>
+                      <mat-select formControlName="identityProof" required>
+                        <mat-option *ngFor="let item of commonService.identityProofAddressProof" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <button mat-raised-button matStepperPrevious type="button">Back</button>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <button mat-raised-button color="primary" [disabled]="!businessDetailsFormGroup.valid"
+                      matStepperNext>Continue</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="bankAccountDetailsFormGroup">
+              <form [formGroup]="bankAccountDetailsFormGroup">
+                <ng-template matStepLabel>Bank Account Details</ng-template>
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Business Name" formControlName="businessName" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput type="text" maxlength="16" (keypress)="restrictOnlyNumeric($event)"
+                        placeholder="Account Number" formControlName="accountNumber" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Bank Name</mat-label>
+                      <mat-select formControlName="bankName" required>
+                        <mat-option *ngFor="let item of commonService.banks" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="IFSC Code" formControlName="IFSCCode" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Account Type</mat-label>
+                      <mat-select formControlName="accountType" required>
+                        <mat-option [value]="'saving'">
+                          Saving
+                        </mat-option>
+                        <mat-option [value]="'current'">
+                          Current
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <button mat-raised-button matStepperPrevious type="button">Back</button>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <button mat-raised-button color="primary" [disabled]="!bankAccountDetailsFormGroup.valid"
+                      matStepperNext>Continue</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+
+            <mat-step [stepControl]="termsOfServicesFormGroup">
+              <form [formGroup]="termsOfServicesFormGroup">
+                <ng-template matStepLabel>Terms of Services</ng-template>
+                <div class="row">
+                  <div class="col-sm-12 shadow mb-4 rounded">
+                    <div class="title mt-2">Base Fee Structure</div>
+                    <hr class="mt-0">
+                    <table class="w-100 mb-2">
+                      <tr>
+                        <td class="text-right pr-5" style="width: 40%">One Time Fee Per POS*:</td>
+                        <td style="width: 20%"></td>
+                        <td class="pl-5" style="width: 40%;">₹ 0.00</td>
+                      </tr>
+                      <tr>
+                        <td class="text-right pr-5" style="width: 40%">Master POS Fee(monthly):</td>
+                        <td style="width: 20%"></td>
+                        <td class="pl-5" style="width: 40%;">₹ 0.00</td>
+                      </tr>
+                      <tr>
+                        <td class="text-right pr-5" style="width: 40%">Additional POS Fee(monthly):</td>
+                        <td style="width: 20%"></td>
+                        <td class="pl-5" style="width: 40%;">₹ 0.00</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-sm-12 shadow mb-4 rounded">
+                    <div class="title mt-2">Transaction Charges</div>
+                    <hr class="mt-0">
+                    <table class="w-100 mb-2">
+                      <tr>
+                        <td class="text-right pr-5" style="width: 40%">All Card Charges + wallets + UPI:</td>
+                        <td style="width: 20%"></td>
+                        <td class="pl-5" style="width: 40%;">₹ 1.99</td>
+                      </tr>
+                      <tr>
+                        <td class="text-right pr-5" style="width: 40%">Net Banking Charges:</td>
+                        <td style="width: 20%"></td>
+                        <td class="pl-5" style="width: 40%;">₹ 1.99</td>
+                      </tr>
+                      <tr>
+                        <td class="text-right pr-5" style="width: 40%">Amex Cards:</td>
+                        <td style="width: 20%"></td>
+                        <td class="pl-5" style="width: 40%;">3.00% + ₹ 1.00</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-sm-12 shadow mb-4 rounded">
+                    <p class="text-gray mt-2">* If you require any additional POS for your business except master POS
+                      then
+                      please fill up the
+                      value in the box given below.
+                    </p>
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Number of Additional POS Required" type="number" value="0">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-12 shadow mb-4 rounded"
+                    style="height: 300px; overflow-y: auto; overflow-x: hidden;">
+                    <div [innerHTML]="termHtml"></div>
+                    <br />
+                    <div class="col-sm-12">
+                      <mat-checkbox color="primary" class="w-100" formControlName="accept1">I have read and accept the
+                        Terms of
+                        Service of DigiPe given above.</mat-checkbox>
+                    </div>
+                    <div class="col-sm-12">
+                      <mat-checkbox color="primary" class="w-100" formControlName="accept2">I understand and accept the
+                        DigiPe fee and
+                        charges.</mat-checkbox>
+                    </div>
+                    <div class="col-sm-12">
+                      <mat-checkbox color="primary" class="w-100" formControlName="accept3">I understand and accept that
+                        my
+                        transactions will be settled in T+3 business days basis. I indemnify DigiPe against any charge
+                        back claims.
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <button mat-raised-button matStepperPrevious type="button">Back</button>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <button mat-raised-button color="primary" [disabled]="!termsOfServicesFormGroup.valid"
+                      matStepperNext>Accept Terms of Services</button>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="uploadKYCDocumentsFormGroup">
+              <form [formGroup]="uploadKYCDocumentsFormGroup">
+                <ng-template matStepLabel>Upload KYC Documents</ng-template>
+                <table class="w-100 pt-2 pb-2 table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>DOCUMENT NAME </th>
+                      <th></th>
+                      <th>ATTACH FILE</th>
+                    </tr>
+                    <tr>
+                      <td>Aadhaar Card/E-Aadhaar</td>
+                      <td>
+                        <input type="file" ng2FileSelect [uploader]="uploader" />
+                        <button mat-raised-button color="primary" [disabled]="!uploader.queue.length">Upload</button>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>PAN Card</td>
+                      <td>
+                        <input type="file" ng2FileSelect [uploader]="uploader" />
+                        <button mat-raised-button color="primary" [disabled]="!uploader.queue.length">Upload</button>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Driving License</td>
+                      <td>
+                        <input type="file" ng2FileSelect [uploader]="uploader" />
+                        <button mat-raised-button color="primary" [disabled]="!uploader.queue.length">Upload</button>
+                      </td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                </table>
+                <div class="text-right">
+                  <button type="button" mat-raised-button color="primary"
+                    [disabled]="!uploadKYCDocumentsFormGroup.valid" (click)="finalSubmit()">Submit</button>
+                </div>
+              </form>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+
+        <div class="text-center mt-4 pt-1" *ngIf="successSignup">
+          <h3 class="text-center mt-5 pt-5">Thankyou for your interest in joining <b>DigiPe family.</b></h3>
+          <h3 class="text-center">Your account will be activated in 3 to 4 business days.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

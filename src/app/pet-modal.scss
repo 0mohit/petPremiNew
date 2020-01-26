@@ -1,0 +1,79 @@
+.pet-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 10, 0.4);
+  z-index: 109;
+}
+
+.pet-modal .pet-modal-content {
+  position: fixed;
+  width: 550px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 0 !important;
+  background: #FFF;
+
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out;
+}
+
+.pet-modal .pet-modal-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #E4EBF4;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+
+.pet-modal .pet-modal-title>.title-text {
+  color: #292D32;
+  font-size: 22px;
+  font-weight: 500;
+  float: left;
+  padding-left: 15px;
+  line-height: 39px;
+}
+
+.pet-modal-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 25px;
+  border-top: 1px solid #E4EBF4;
+  height: 54px;
+  box-shadow: 5px -2px 10px -5px #E4EBF4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: #FFF;
+}
+
+.pet-modal-footer>button {
+  margin-left: 10px;
+}
+
+.pet-modal-body {
+  padding: 54px 0;
+  height: 100%;
+}
+
+.pet-modal-body-inner {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 1rem;
+}

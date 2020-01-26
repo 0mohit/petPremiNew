@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo|Roboto+Condensed&display=swap');
+@import './app/pet-modal.scss';
+@import './app/pet-tab.scss';
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$petPremi-primary: mat-palette($mat-indigo);
+$petPremi-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$petPremi-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$petPremi-theme: mat-light-theme($petPremi-primary, $petPremi-accent, $petPremi-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($petPremi-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  font-size: 12px;
+  outline: none;
+}
+
+p {
+  //   font-family: 'Heebo', sans-serif;
+}
+
+body {
+  margin: 0;
+  //   font-family: 'Heebo', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+button {
+  outline: none !important;
+}
+
+.text-gray {
+  color: #949494;
+}
+
+.mat-form-field-subscript-wrapper {
+  font-size: 60% !important;
+  margin-top: 0 !important;
+}
+
+.mat-checkbox-label {
+  white-space: pre-wrap;
+}
+
+hr {
+  border-width: 2px;
+}
+
+app-signup {
+
+  .mat-horizontal-stepper-header {
+    padding: 0 14px;
+  }
+
+  .mat-checkbox-inner-container {
+    margin-top: 4px !important;
+  }
+}
+
+
+.sidemenu-open {
+
+
+  .sideMenuContainer {
+    width: 250px !important;
+    transition: all 0.5s ease;
+
+    &#mobile-menu {
+      box-shadow: 0px 1px 4px 0px #3e4b8b;
+      z-index: 101;
+
+      .sideMenu {
+        height: calc(100vh - 56px) !important;
+      }
+    }
+  }
+
+  .sideMenu {
+    .title {
+      display: inline-block !important;
+      transition: all 0.5s ease;
+    }
+
+    .logo {
+      justify-content: space-around !important;
+      flex-direction: row !important;
+      margin-top: 0 !important;
+
+      .small-logo {
+        width: 0px !important;
+        transition: all 0.5s ease;
+      }
+
+      .large-logo {
+        width: 60% !important;
+        transition: all 0.5s ease;
+      }
+    }
+    .digi-arrow {
+      display: block !important;
+    }
+
+    .menu-footer {
+      font-size: .8rem !important;
+      transition: all 0.5s ease;
+    }
+  }
+}
+.filter {
+.mat-form-field-wrapper{
+  padding: 0px !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgba(255, 255, 255, 0.12);
+}
+.example-full-width{
+  width: 100%;
+}
+.filter-button{
+  width: 100%;
+  padding: 6.5px;
+  border-radius: 50px;
+  background: $textYellow;
+  color: $textDefault;
+  
+}
+}
+.filter.mat-card{
+  border-radius: 50px !important;
+  padding: 0 5px !important;
+}
+.pointer {
+  cursor: pointer;
+}
