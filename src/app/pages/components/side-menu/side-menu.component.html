@@ -2,9 +2,14 @@
   <div>
     <div class="logo ml-2" style="justify-content: left !important;">
       <!-- <img src="./assets/images/logo.png" class="large-logo" /> -->
-      <mat-icon [ngClass]="{'hide':isMenuOpen}" style="color: black;" (click)="menuToggel()">reorder</mat-icon>
-      <mat-icon [ngClass]="{'hide':!isMenuOpen}" style="color: black;" (click)="menuToggel()">keyboard_backspace</mat-icon>
+      <mat-icon [ngClass]="{'hide':isMenuOpen ,sideMenuTooggleIcon:true }" (click)="menuToggel()">reorder</mat-icon>
+      <mat-icon [ngClass]="{'hide':!isMenuOpen,sideMenuTooggleIcon:true}" (click)="menuToggel()">keyboard_backspace
+      </mat-icon>
       <!-- <img src="./assets/images/favicon.ico" class="small-logo mt-2" /> -->
+     <div class="w-100 text-right"  [ngClass]="{'hide':!isMenuOpen}">
+      <div class="colorSwitch" style="background:#d8d8d8;" (click)="toggleThem('light')"></div>
+      <div class="colorSwitch" style="background:black;" (click)="toggleThem('dark')"></div>
+     </div>
     </div>
     <div class="menu-list">
       <div class="menu" [ngClass]="{'center': !isMenuOpen}" routerLink="/dashboard" routerLinkActive="active">
@@ -33,7 +38,8 @@
       </div>
 
       <div class="menu has-sub-menu" style="flex-direction: column;" [ngClass]="{'submenu-opened': isSubMenuOpen}">
-        <div style="display: flex; justify-content: space-between;" [ngClass]="{'center': !isMenuOpen}" (click)="toggleSubMenu()">
+        <div style="display: flex; justify-content: space-between;" [ngClass]="{'center': !isMenuOpen}"
+          (click)="toggleSubMenu()">
           <div>
             <mat-icon [ngClass]="iconColor">account_box</mat-icon>
             <span class="title"> User Management</span>
@@ -66,7 +72,8 @@
         </div>
       </div>
       <div class="menu has-sub-menu" style="flex-direction: column;" [ngClass]="{'submenu-opened': isSubMenuOpen}">
-        <div style="display: flex; justify-content: space-between;" [ngClass]="{'center': !isMenuOpen}" (click)="toggleSubMenu()">
+        <div style="display: flex; justify-content: space-between;" [ngClass]="{'center': !isMenuOpen}"
+          (click)="toggleSubMenu()">
           <div>
             <mat-icon [ngClass]="iconColor">settings_applications</mat-icon>
             <span class="title">Settings</span>
@@ -77,7 +84,7 @@
         </div>
         <div class="sub-menu-container">
           <div class="sub-menu">
-            <mat-icon  [ngClass]="iconColor">person</mat-icon>
+            <mat-icon [ngClass]="iconColor">person</mat-icon>
             <span class="title"> Profile </span>
           </div>
           <!-- <div class="sub-menu" routerLink="/settings/business-details" routerLinkActive="active">

@@ -7,16 +7,17 @@
   .sideMenuContainer {
     width: 60px;
     transition: all 0.5s ease;
-    margin: 5px;
+    padding: 5px;
+    background: var(--sidemenuBackGround);
   }
   .buttonBackG{
-    background: $textYellow;
+    background: var(--textYellow);
   }
 
   .content-container {
     width: 100%;
 
-    background: $contentBackGround;
+    background: var(--contentBackGround);
 
     .digi-navbar {
       height: 54px;

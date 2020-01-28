@@ -1,3 +1,6 @@
-<mat-progress-bar *ngIf="loading" color="promary" mode="indeterminate" class="router-progress">
-</mat-progress-bar>
-<router-outlet></router-outlet>
+
+<div appTheme>
+    <mat-progress-bar *ngIf="loading" color="primary" mode="indeterminate" class="router-progress">
+    </mat-progress-bar>
+    <router-outlet></router-outlet>    
+</div>

@@ -3,7 +3,7 @@
 table {
   tr {
     td:first-child {
-      color: $textGray;
+      color: var(--textGray);
     }
   }
 }

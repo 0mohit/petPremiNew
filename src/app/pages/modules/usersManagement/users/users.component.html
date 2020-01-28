@@ -26,7 +26,7 @@
 
           <div class="col-lg-2 col-md-2  col-sm-12 p-0">
             <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
-              <mat-label> Role </mat-label>
+              <mat-label class="lableText"> Role </mat-label>
               <mat-select formControlName='roles' multiple>
                 <mat-option *ngFor="let item of rolesDropdownList" [value]="item">
                   {{item}}
@@ -48,7 +48,7 @@
 
           <div class="col-lg-2 col-md-2  col-sm-12 p-0">
             <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
-              <mat-label> Partner </mat-label>
+              <mat-label class="lableText"> Partner </mat-label>
               <mat-select formControlName='partnerName' multiple>
                 <mat-option *ngFor="let item of partnerDropdownList" [value]="item">
                   {{item}}
@@ -59,7 +59,7 @@
 
           <div class="col-lg-2 col-md-2  col-sm-12 p-0">
             <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
-              <mat-label> Department </mat-label>
+              <mat-label class="lableText"> Department </mat-label>
               <mat-select formControlName='dept' multiple>
                 <mat-option *ngFor="let item of deptDropdownList" [value]="item">
                   {{item}}

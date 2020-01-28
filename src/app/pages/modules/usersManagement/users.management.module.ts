@@ -11,6 +11,7 @@ import { CreateUserComponent } from './userAction/create-user/create-user.compon
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from './../../../material.module';
 import { SharedComponentModule } from '../../components/shared-component.module';
+import { ThemeModule } from './../../../theme/theme.module';
 const routes: Routes = [
   {
     path: '',
@@ -60,7 +61,8 @@ const routes: Routes = [
     MaterialModule,
     SharedComponentModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ThemeModule
   ],
   entryComponents: [],
   exports: [RouterModule]

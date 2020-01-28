@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AppInterceptor } from "./helpers/app.interceptor";
 import { ErrorInterceptor } from "./helpers/error.interceptor";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-
+import { ThemeModule } from './theme/theme.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,12 +16,14 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ThemeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[ThemeModule]
 })
 export class AppModule {}

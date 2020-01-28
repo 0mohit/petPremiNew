@@ -3,10 +3,10 @@
 .sideMenu {
   min-height: 100vh;
   height: 100%;
-  background: $sidemenuBackGround;
-  -webkit-box-shadow: -1px 0px 8px 1px $sidemenuBackGround;
-  -moz-box-shadow: -1px 0px 8px 1px $sidemenuBackGround;
-  box-shadow: -1px 0px 8px 1px $sidemenuBackGround;
+  background: var(--sidemenuBackGround);
+  -webkit-box-shadow: -1px 0px 8px 1px var(--sidemenuBackGround);
+  -moz-box-shadow: -1px 0px 8px 1px var(--sidemenuBackGround);
+  box-shadow: -1px 0px 8px 1px var(--sidemenuBackGround);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -35,7 +35,7 @@
       cursor: pointer;
 
       &:hover {
-        color: $textYellow;
+        color: var(--textYellow);
         border: #fff;
       }
     }
@@ -46,6 +46,17 @@
   .hide{
     display: none;
   }
+  .colorSwitch{
+    padding: 2px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin:5px;
+  }
+  .sideMenuTooggleIcon{
+    color: var(--iconToggle) !important;
+  }
   .menu-list {
     display: flex;
     flex-direction: column;
@@ -55,16 +66,16 @@
       display: flex;
       flex-direction: row;
       padding: 12px;
-      color: $textDefault;
+      color: var(--textDefault);
       cursor: pointer;
-      border-bottom: 0.5px solid #fff;
+      // border-bottom: 0.5px solid #fff;
       outline: none;
       align-items: center;
       font-size: 14px;
 
       &.active {
-        background: $textYellow;
-        color: $textDefault;
+        background: var(--textYellow);
+        color: var(--activeText);
         border-radius: 5px;
       }
       .mat-icon {
@@ -72,12 +83,12 @@
         cursor: pointer;
 
         &:hover {
-          color: $textYellow;
-          border: $textYellow;
+          color: var(--textYellow);
+          border: var(--textYellow);
         }
       }
       .icon-color {
-        color: $textGray;
+        color: var(--textGray);
       }
       .digi-arrow {
         display: none;
@@ -93,8 +104,8 @@
       }
 
       &:hover:not(.has-sub-menu) {
-        background: $whiteBackGround;
-        color: $textYellow;
+        background: var(--whiteBackGround);
+        color: var(--textYellow);
       }
 
       &.has-sub-menu {
@@ -108,7 +119,7 @@
         transition: all 0.5s ease;
 
         .sub-menu {
-          border-bottom: 0.5px solid #fff;
+          // border-bottom: 0.5px solid #fff;
           padding: 4px 0;
           display: flex;
           align-items: center;
@@ -123,13 +134,13 @@
           }
 
           &:hover {
-            background: $whiteBackGround;
-            color: $textYellow;
+            background: var(--whiteBackGround);
+            color: var(--textYellow);
           }
 
           &.active {
-            background: $textYellow;
-            color: $textDefault;
+            background: var(--textYellow);
+            color: var(--activeText);
             border-radius: 5px;
           }
         }

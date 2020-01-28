@@ -16,7 +16,6 @@ import {
 export class AppComponent {
   title = "Pet Premi";
   loading = false;
-
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
@@ -37,5 +36,7 @@ export class AppComponent {
         }
       }
     });
+    // this.toggleThem();
   }
+ 
 }

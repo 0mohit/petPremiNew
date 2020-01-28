@@ -82,7 +82,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   createDataForUserSearchApi(active, direction, pageIndex, pageSize) {
     const sort = {};
     if (active) {
-      console.log('active', active);
+      // console.log('active', active);
       sort[direction.toUpperCase()] = [active];
     }
     return {
@@ -159,7 +159,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   }
   ngAfterViewInit() {
-    console.log("this.sort",this.sort)
+    // console.log("this.sort",this.sort)
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
@@ -167,7 +167,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          console.log("****************")
+          // console.log("****************")
           return this.apiService.postTypeRequest('getUser.json',
             this.createDataForUserApi(this.sort.active, this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize));
         }),
@@ -186,7 +186,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         })
       ).subscribe((data: any[]) => {
         data.forEach((d: any) => {
-          console.log(d);
+          // console.log(d);
           if (d.departments.length > 0) {
             const deptData = [];
             d.departments.forEach(dept => deptData.push(dept.name));
@@ -292,7 +292,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         })
       ).subscribe((data: any[]) => {
         data.forEach((d: any) => {
-          console.log(d);
+          // console.log(d);
           if (d.departments.length > 0) {
             const deptData = [];
             d.departments.forEach(dept => deptData.push(dept.name));

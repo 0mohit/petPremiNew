@@ -4,36 +4,69 @@ table {
   width: 100%;
   border-collapse: separate !important;
   border-spacing: 0 4px !important;
-  background: $contentBackGround;
+  background: var(--contentBackGround);
   border-top: 1px solid #bfbfbf;
 }
 
 tr {
-  background: $whiteBackGround;
+  background: var(--whiteBackGround);
 }
 thead {
   background: mat-color($mat-gray, 100);
   // border-top-color: mat-color($mat-gray, 100);
 }
-tr td:first-child { border-top-left-radius: 10px; }
-tr td:last-child { border-top-right-radius: 10px; }
-tr td:first-child { border-bottom-left-radius: 10px; }
-tr td:last-child { border-bottom-right-radius: 10px; }
-.mat-paginator-container{
+tr td:first-child {
+  border-top-left-radius: 10px;
+}
+tr td:last-child {
+  border-top-right-radius: 10px;
+}
+tr td:first-child {
+  border-bottom-left-radius: 10px;
+}
+tr td:last-child {
   border-bottom-right-radius: 10px;
 }
+.mat-paginator-container {
+  //border-bottom-right-radius: 10px;
+}
 .yellow {
-  background: $textYellow;
+  background: var(--textYellow);
 }
 
 th {
-  background: $contentBackGround !important;
+  background: var(--contentBackGround) !important;
   border-bottom: unset !important;
+  color: var(--textGray);
+}
+
+td {
+  color: var(--textGray);
 }
 .filter {
+  background: var(--whiteBackGround);
+  color: var(--textGray);
   input {
     text-align: left;
     padding: 16px;
+  }
+  .mat-form-field-outline {
+    color: var(--whiteBackGround);
+  }
+  // .mat-form.mat-form-field-appearance-standard .mat-form-field-underline-field-underline{
+    .filter .mat-form-field-appearance-outline .mat-form-field-outline{
+    // width: unset !important;
+    // background-color: unset !important;
+    color: var(--whiteBackGround);
+
+  }
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--textGray);
+    opacity: 1; /* Firefox */
+  }
+  .lableText {
+    color: var(--textGray);
   }
 }
 
@@ -75,8 +108,10 @@ td.mat-footer-cell:nth-child(6),
 th.mat-header-cell:nth-child(6) {
   width: 15%;
 }
-.mat-paginator{
+.mat-paginator {
   border-radius: 10px;
+  background: var(--contentBackGround) !important;
+  color: var(--textGray);
 }
 .btn-round {
   border-radius: 20px;

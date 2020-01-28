@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ThemeService } from 'src/app/theme/theme.service';
 
 @Component({
   selector: "app-side-menu",
@@ -10,7 +11,9 @@ export class SideMenuComponent implements OnInit {
   isSubMenuOpen = false;
   isMenuOpen=true;
   iconColor='icon-color';
+
   constructor(
+    private themService: ThemeService
   ) {}
 
   ngOnInit() {}
@@ -21,6 +24,11 @@ export class SideMenuComponent implements OnInit {
       this.isSubMenuOpen =false;
     }
   }
+
+  toggleThem(theme) {
+    this.themService.setActiveThem(theme);
+  }
+
   menuToggel() {
     if (
       document

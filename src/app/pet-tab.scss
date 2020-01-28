@@ -17,9 +17,9 @@
     transition: all 0.5s ease;
 
     &.active {
-      border-bottom-color: $textYellow;
+      border-bottom-color: var(--textYellow);
       background: #fff;
-      color: $textYellow;
+      color: var(--textYellow);
       transition: all 0.5s ease;
     }
   }
