@@ -1,0 +1,69 @@
+<div class="fs-modal" *ngIf="isClose">
+    <div class="fs-modal-content animated" [ngClass]="{'slideInRight': isDisplayForm, 'slideOutRight':!isDisplayForm }" style="width: 550px;">
+      <div class="fs-modal-title">
+        <div class="title-icon badge-lg badge-purple"><i class="fa fa-plus"></i></div>
+        <div class="title-text">Create Role</div>
+        <div class="close-btn" data-dismiss="modal" (click)="cancel()"><i class="fa fa-times"></i></div>
+      </div>
+      <form [formGroup]="createRoleForm" >
+        <div class="fs-modal-body">
+          <div class="alert alert-success alert-dismissible" *ngIf="successMsg">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Partner updated succcessfully.
+          </div>
+          <div class="fs-modal-body-inner">
+            <div class="form-row mt-4">
+              <div class="form-group col-md-12">
+                <div class="fs_data_table_wrapper">
+                  <div class="row">
+                    <div class="form-group col-md-4">
+                      <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                        <mat-label> Role Name</mat-label>
+                        <input matInput formControlName="roleName">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                        <mat-label> Role description </mat-label>
+                        <input matInput formControlName="roleDesc">
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-4">
+                    <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                      <mat-label> Select Privileges </mat-label>
+                      <mat-select formControlName="privileges" multiple>
+                        <mat-option *ngFor="let item of privDropdownList" [value]="item">
+                          {{item.privilege}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                        <mat-label> Functionality </mat-label>
+                        <mat-select formControlName='functionality' multiple>
+                          <mat-option *ngFor="let item of funcDropdownList" [value]="item">
+                            {{item.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+        <div class="fs-modal-footer">
+          <button color="primary" class="filter-button mr-3" (click)="createRole()" mat-raised-button id="submit">Create</button>
+          <button mat-raised-button class="filter-button mr-3" color="warn" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  
+  

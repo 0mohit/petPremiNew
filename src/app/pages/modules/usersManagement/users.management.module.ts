@@ -12,6 +12,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from './../../../material.module';
 import { SharedComponentModule } from '../../components/shared-component.module';
 import { ThemeModule } from './../../../theme/theme.module';
+import { CreateRoleComponent } from './create-role/create-role.component';
+import { EditRoleComponent } from './edit-role/edit-role.component';
 const routes: Routes = [
   {
     path: '',
@@ -52,7 +54,9 @@ const routes: Routes = [
     FunctionalityComponent,
     RoleComponent,
     PrivilegeComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    CreateRoleComponent,
+    EditRoleComponent
   ],
   imports: [
     RouterModule.forChild(routes),

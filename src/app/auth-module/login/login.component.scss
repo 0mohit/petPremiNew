@@ -10,8 +10,10 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
 
     .digiM-loginBg {
-      // background-image: url('../../../assets/images/bg2.jpg');
+      background-image: url('../../../assets/images/bg.jpg');
       border-top-right-radius: 1rem;
+      background-position: center;
+      background-size: contain;
       border-bottom-right-radius: 1rem;
       justify-content: center;
       display: flex;

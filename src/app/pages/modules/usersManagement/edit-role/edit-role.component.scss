@@ -1,0 +1,181 @@
+.btn
+{
+  font-size: 12px !important;
+  font-weight: 600;
+  text-shadow: none !important;
+  -webkit-border-radius: 2px !important;
+  -moz-border-radius: 2px !important;
+  border-radius: 2px !important;
+
+  height: 34px;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.btn-lg
+{
+  height: 35px !important;
+}
+
+.btn-primary
+{
+  background-color: #6C70DC !important;
+  color: #FFF !important;
+  border: 1px solid #6C70DC !important;
+}
+
+.btn-primary:hover
+{
+  background-color: #5458ac !important;
+  border: 1px solid #5458ac !important;
+  color: #FFF !important;
+}
+
+.modal-body
+{
+  padding: 25px;
+}
+
+.modal-content
+{
+  border: 0 !important;
+  -webkit-border-radius: 2px !important;
+  -moz-border-radius: 2px !important;
+  border-radius: 2px !important;
+}
+
+.modal-title
+{
+  color: #292D32;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+.modal-footer
+{
+  border-top: 0;
+  padding: 25px;
+  padding-top: 0;
+}
+
+.fs-modal
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 10, 0.4);
+  z-index: 99;
+}
+
+.fs-modal .fs-modal-content
+{
+  position: fixed;
+  width: 550px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 0 !important;
+  background: #FFF;
+
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out;
+}
+
+.fs-modal .fs-modal-title
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 25px;
+  border-bottom: 1px solid #E4EBF4;
+  height: 81px;
+  background: #FFF;
+}
+
+.fs-modal .fs-modal-title > .title-icon
+{
+  float: left;
+}
+
+.fs-modal .fs-modal-title > .title-text
+{
+  color: #292D32;
+  font-size: 22px;
+  font-weight: 500;
+  float: left;
+  padding-left: 15px;
+  line-height: 39px;
+}
+
+.fs-modal .fs-modal-title > .close-btn
+{
+  float: right;
+  color: #ADBFC7;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.fs-modal .fs-modal-title > .close-btn > i
+{
+  font-size: 20px;
+}
+
+.fs-modal-footer
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 25px;
+  border-top: 1px solid #E4EBF4;
+  height: 81px;
+  box-shadow: 5px -2px 10px -5px #E4EBF4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: #FFF;
+}
+
+.fs-modal-footer > button
+{
+  margin-left: 10px;
+}
+
+.fs-modal-body
+{
+  padding: 80px 0;
+  height: 100%;
+}
+
+.fs-modal-body-inner
+{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 35px;
+}
+.badge-purple{
+  background: #6c6fdb;
+  color: #fff;
+  width: 40px;
+  border-radius: 36%;
+  height: 40px;
+}
+.badge-purple{
+  i{
+    padding: 12px;
+  }
+}

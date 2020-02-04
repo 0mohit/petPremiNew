@@ -1,5 +1,8 @@
 @import '../colors.scss';
 
+*{
+  font-size: 12px;
+}
 .mainContainer {
   display: flex;
   flex: 1;

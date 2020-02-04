@@ -1,12 +1,12 @@
-<div class="container-fluid pet-main-container">
+<div class="container-fluid digiM-main-container">
   <div class="row">
     <div class="col-md-8 col-sm-12 offset-md-2">
-      <div class="row pet-loginContainer">
-        <div class="col-md-6 col-sm-12 pet-loginForm">
+      <div class="row digiM-loginContainer">
+        <div class="col-md-6 col-sm-12 digiM-loginForm">
           <div class="formContainer">
-            <!-- <p class="title">
-              <img src="./assets/images/logo.svg" alt="DigiPe" class="logo">
-            </p> -->
+            <p class="title">
+              <img src="./assets/images/logo.png" alt="petpremi" class="logo">
+            </p>
             <form *ngIf="!isForgetEnable" [formGroup]="loginForm" (ngSubmit)="signIn()" autocomplete="off">
               <mat-form-field class="w-100">
                 <input matInput placeholder="Mobile Number" maxlength="10" formControlName="mobile" type="text"
@@ -20,35 +20,34 @@
                 <input matInput type="password" placeholder="Password" formControlName="password" required>
                 <mat-hint>Min 8 Character</mat-hint>
               </mat-form-field>
-              <!-- <div class="col-12 text-right form-footer m-0">
+              <div class="col-12 text-right form-footer m-0">
                 <p class="m-0" (click)="isForgetEnable = true">Forgot Password?</p>
-              </div> -->
+              </div>
               <button mat-raised-button [disabled]="!loginForm.valid" color="primary" type="submit"
                 class="w-100 mt-2">Sign in</button>
             </form>
-            <!-- <app-forget-password *ngIf="isForgetEnable" (goBack)="isForgetEnable = false"></app-forget-password> -->
-            <!-- <div class="row form-footer" *ngIf="!isForgetEnable">
+            <app-forget-password *ngIf="isForgetEnable" (goBack)="isForgetEnable = false"></app-forget-password>
+            <div class="row form-footer" *ngIf="!isForgetEnable">
               <div class="col-12 text-right">
                 <p>By logging in, you agree to our <a href="http://google.com" target="_blank">Terms & Conditions</a> &
                   <a target="_blank" href="http://google.com">Privacy Policy</a>.</p>
               </div>
-              <div class="col-12 text-right">
+              <!-- <div class="col-12 text-right">
                 <span class="text-gray">New User? </span> <a [routerLink]="['/auth/signup']"> Sign Up</a>
-              </div>
-            </div> -->
+              </div> -->
+            </div>
           </div>
         </div>
-        <!-- <div class="col-md-6 pet-loginBg">
-          <p class="title">Merchant Portal</p>
+        <div class="col-md-6 digiM-loginBg">
+          <p class="title"></p>
           <p class="description">
-            DigiPe is a value based alternative means of payment application couched in simplicity and convenience,
-            guaranteeing the users and/or consumer both performance and service value at just a click of a button.
           </p>
-        </div> -->
+        </div>
       </div>
     </div>
     <!-- <div class="copyRight col-sm-12 text-center mt-4">
-      <p>v 1.0.0 Copyright © {{year}} PetPremi</p>
+      <p>v 1.0.0 Copyright © {{year}} Petpremi</p>
+      <p>Powered by Petpremi.</p>
     </div> -->
   </div>
 </div>

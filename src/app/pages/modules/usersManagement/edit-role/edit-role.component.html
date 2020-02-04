@@ -1,0 +1,68 @@
+<div class="fs-modal" id="FSModal1" *ngIf="isCloseEditForm">
+    <div class="fs-modal-content animated" [ngClass]="{'slideInRight': isDisplayEditForm, 'slideOutRight':!isDisplayEditForm }">
+  
+  
+      <div class="fs-modal-title">
+        <div class="title-icon badge-lg badge-purple"><i class="fa fa-plus"></i></div>
+        <div class="title-text">Edit Role</div>
+        <div class="close-btn" data-dismiss="modal" (click)="cancel()"><i class="fa fa-times"></i></div>
+      </div>
+  
+      <div class="fs-modal-body">
+        <div class="alert alert-success alert-dismissible" *ngIf="successMsg">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> Role updated successfully.
+        </div>
+        <div class="fs-modal-body-inner">
+          <form [formGroup]="editRoleForm" (ngSubmit)="submit()">
+            <div class="row pl-3 pr-3">
+              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                  <mat-label> Role Name </mat-label>
+                  <input matInput formControlName="roleName">
+                </mat-form-field>
+              </div>
+  
+              <div class="col-lg-3 col-md-3  col-sm-12 p-0">
+                <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                  <mat-label> Role description </mat-label>
+                  <input matInput formControlName="roleDesc">
+                </mat-form-field>
+              </div>
+  
+              <div class="col-lg-3 col-md-3  col-sm-12 p-0">
+                <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                  <mat-label> Privileges </mat-label>
+                  <mat-select formControlName='privileges' multiple>
+                    <mat-option *ngFor="let item of privilegesDropdownList" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+  
+              <div class="col-lg-3 col-md-3  col-sm-12 p-0">
+                <mat-form-field floatLabel='never' appearance="outline" class="example-full-width">
+                  <mat-label> Functionality </mat-label>
+                  <mat-select formControlName='functionality' multiple>
+                    <mat-option *ngFor="let item of funcDropdownList" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-lg btn-primary edit-btn">UPDATE</button>
+              </div>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <div class="fs-modal-footer">
+        <button type="button" class="btn btn-lg btn-default border" (click)="cancel()">CANCEL</button>
+      </div>
+    </div></div>
+  
