@@ -95,51 +95,51 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    // this.apiService.postTypeRequest('/admin/crud',
-    //   this.createDataForApi('Department'))
-    //   .subscribe((res: any) => {
-    //     res.responseResult.data.content.forEach((row: any) => {
-    //       if (!this.distinctDept.includes(row.name) && row.name !== '' && row.name !== null) {
-    //         this.distinctDept.push(row.name);
-    //         this.deptDropdownList = this.distinctDept;
-    //       }
-    //     }
-    //     );
-    //   });
+    this.apiService.postTypeRequest('/admin/crud',
+      this.createDataForApi('Department'))
+      .subscribe((res: any) => {
+        res.responseResult.data.content.forEach((row: any) => {
+          if (!this.distinctDept.includes(row.name) && row.name !== '' && row.name !== null) {
+            this.distinctDept.push(row.name);
+            this.deptDropdownList = this.distinctDept;
+          }
+        }
+        );
+      });
 
 
-    // this.apiService.postTypeRequest('/admin/crud',
-    //   this.createDataForApi('PartnerM'))
-    //   .subscribe((res: any) => {
-    //     res.responseResult.data.content.forEach((row: any) => {
-    //       if (!this.distinctPartnerType.includes(row.partnerType) && row.partnerType !== '' && row.partnerType !== null) {
-    //         this.distinctPartnerType.push(row.partnerType);
-    //         this.partnerTypeDropdownList = this.distinctPartnerType;
-    //       }
+    this.apiService.postTypeRequest('/admin/crud',
+      this.createDataForApi('PartnerM'))
+      .subscribe((res: any) => {
+        res.responseResult.data.content.forEach((row: any) => {
+          if (!this.distinctPartnerType.includes(row.partnerType) && row.partnerType !== '' && row.partnerType !== null) {
+            this.distinctPartnerType.push(row.partnerType);
+            this.partnerTypeDropdownList = this.distinctPartnerType;
+          }
 
-    //       if (row.status === 'A') {
-    //         if (!this.distinctPartnerList.includes(row.partnerName) && row.partnerName !== '' && row.partnerName !== null) {
-    //           this.distinctPartnerList.push(row.partnerName);
-    //           this.partnerDropdownList = this.distinctPartnerList;
-    //         }
-    //       }
-    //     }
-    //     );
-    //   });
+          if (row.status === 'A') {
+            if (!this.distinctPartnerList.includes(row.partnerName) && row.partnerName !== '' && row.partnerName !== null) {
+              this.distinctPartnerList.push(row.partnerName);
+              this.partnerDropdownList = this.distinctPartnerList;
+            }
+          }
+        }
+        );
+      });
 
 
 
-    // this.apiService.postTypeRequest('/admin/crud',
-    //   this.createDataForApi('Role'))
-    //   .subscribe((res: any) => {
-    //     res.responseResult.data.content.forEach((row: any) => {
-    //       if (!this.distinctRoles.includes(row.roleName) && row.name !== '' && row.name !== null) {
-    //         this.distinctRoles.push(row.roleName);
-    //         this.rolesDropdownList = this.distinctRoles;
-    //       }
-    //     }
-    //     );
-    //   });
+    this.apiService.postTypeRequest('/admin/crud',
+      this.createDataForApi('Role'))
+      .subscribe((res: any) => {
+        res.responseResult.data.content.forEach((row: any) => {
+          if (!this.distinctRoles.includes(row.roleName) && row.name !== '' && row.name !== null) {
+            this.distinctRoles.push(row.roleName);
+            this.rolesDropdownList = this.distinctRoles;
+          }
+        }
+        );
+      });
 
 
 
@@ -159,8 +159,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   }
   ngAfterViewInit() {
-    // console.log("this.sort",this.sort)
-    // If the user changes the sort order, reset back to the first page.
+   this.sort.sort({ id: 'id', start: 'asc', disableClear: false} )
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
@@ -168,7 +167,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         switchMap(() => {
           this.isLoadingResults = true;
           // console.log("****************")
-          return this.apiService.postTypeRequest('getUser.json',
+          return this.apiService.postTypeRequest('/admin/crud',
             this.createDataForUserApi(this.sort.active, this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize));
         }),
         map((genericParamsApiData: any) => {
@@ -185,20 +184,22 @@ export class UsersComponent implements OnInit, AfterViewInit {
           return observableOf([]);
         })
       ).subscribe((data: any[]) => {
+        console.log(data);
+
         data.forEach((d: any) => {
-          // console.log(d);
           if (d.departments.length > 0) {
             const deptData = [];
             d.departments.forEach(dept => deptData.push(dept.name));
             d.departments = deptData.toString();
           }
 
-          if (d.roles.length > 0) {
-            const roleData = [];
-            d.roles.forEach(role => roleData.push(role.roleName));
-            d.roles = roleData.toString();
-          }
+          // if (d.roles.length > 0) {
+          //   const roleData = [];
+          //   d.roles.forEach(role => roleData.push(role.roleName));
+          //   d.roles = roleData.toString();
+          // }
         });
+        console.log("data",data)
         this.tableData = data;
       });
   }
@@ -328,7 +329,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     }
     return {
       commonParamHash: {
-        entityName: 'UmGcsuserM',
+        entityName: 'User',
         operation: 'READ',
         pagination: {
           pageNumber: pageIndex,

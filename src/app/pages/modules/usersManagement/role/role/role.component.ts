@@ -1,4 +1,4 @@
-import {Component, ViewChild, AfterViewInit, OnInit} from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of as observableOf } from 'rxjs';
@@ -7,7 +7,7 @@ import { ApiService } from '../../../../../services/apiService';
 import { CommonApiService } from '../../../../../services/common-api.service'
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from './../../../../components/confirmation-dialog/confirmation-dialog.component';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-role',
@@ -16,7 +16,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class RoleComponent implements OnInit {
 
- 
+
   filter = {
     roleName_LIKE: '',
     roleDesc_LIKE: '',
@@ -60,10 +60,10 @@ export class RoleComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   public searchRoleForm: FormGroup;
   constructor(private fb: FormBuilder,
-              public dialog: MatDialog,
-              private apiService: ApiService,
-              private commonApiService: CommonApiService
-          
+    public dialog: MatDialog,
+    private apiService: ApiService,
+    private commonApiService: CommonApiService
+
   ) { }
 
 
@@ -81,11 +81,11 @@ export class RoleComponent implements OnInit {
       this.createDataPrivilegeApi())
       .subscribe((res: any) => {
         res.responseResult.data.content.forEach((row: any) => {
-            if (!this.distinctPrivileges.includes(row.privilege) && row.privilege !== '' && row.privilege !== null) {
-              this.distinctPrivileges.push(row.privilege);
-              this.privilegesDropdownList = this.distinctPrivileges;
-            }
+          if (!this.distinctPrivileges.includes(row.privilege) && row.privilege !== '' && row.privilege !== null) {
+            this.distinctPrivileges.push(row.privilege);
+            this.privilegesDropdownList = this.distinctPrivileges;
           }
+        }
         );
       });
 
@@ -94,23 +94,25 @@ export class RoleComponent implements OnInit {
       this.createDataForFuncApi())
       .subscribe((res: any) => {
         res.responseResult.data.content.forEach((row: any) => {
-            if (!this.distinctFunctionality.includes(row.name) && row.name !== '' && row.name !== null) {
-              this.distinctFunctionality.push(row.name);
-              this.funcDropdownList = this.distinctFunctionality;
-            }
+          if (!this.distinctFunctionality.includes(row.name) && row.name !== '' && row.name !== null) {
+            this.distinctFunctionality.push(row.name);
+            this.funcDropdownList = this.distinctFunctionality;
           }
+        }
         );
       });
 
   }
 
   ngAfterViewInit() {
+    this.sort.sort({ id: 'privileges', start: 'asc', disableClear: false });
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
     this.getRecords();
   }
 
-  getRecords(){
+  getRecords() {
     // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
@@ -134,49 +136,49 @@ export class RoleComponent implements OnInit {
         })
       ).subscribe((data: any[]) => {
 
-      data.forEach((d: any) => {
+        data.forEach((d: any) => {
 
-        if (d.functionaries) {
+          if (d.functionaries) {
 
-          const functionalityData = [];
-          d.functionaries.forEach(functionality => functionalityData.push(functionality.name));
-          d.functionaries = functionalityData.toString();
-        }
+            const functionalityData = [];
+            d.functionaries.forEach(functionality => functionalityData.push(functionality.name));
+            d.functionaries = functionalityData.toString();
+          }
 
-        if (d.privileges) {
+          if (d.privileges) {
 
-          const privilegeData = [];
-          d.privileges.forEach(privilegeNames => privilegeData.push(privilegeNames.privilege));
-          d.privileges = privilegeData.toString();
-        }
-    });
-      this.tableData = data;
-      console.log('this.tableData', this.tableData);
+            const privilegeData = [];
+            d.privileges.forEach(privilegeNames => privilegeData.push(privilegeNames.privilege));
+            d.privileges = privilegeData.toString();
+          }
+        });
+        this.tableData = data;
+        console.log('this.tableData', this.tableData);
       });
   }
 
   delete(row, index) {
     try {
-      
+
       const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
         width: '400px',
         data: {
           message: 'Are you sure ?'
         }
       });
-     
+
       dialogRef.afterClosed().subscribe(result => {
-        if(result) {
+        if (result) {
           this.apiService.postTypeRequest('/admin/crud',
-          this.commonApiService.deleteEntryFromTable('Role','roleId',row.roleId)).subscribe(res => {
-            this.getRecords();
-          });
-          
+            this.commonApiService.deleteEntryFromTable('Role', 'roleId', row.roleId)).subscribe(res => {
+              this.getRecords();
+            });
+
           // console.log('index',index)
           // console.log((this.paginator.pageIndex * this.paginator.pageSize) + index)
           // console.log('this.tableData', this.tableData)
           // //this.tableData = this.tableData.splice((this.paginator.pageIndex * this.paginator.pageSize) + index,1);
-        }  
+        }
       });
 
     } catch (err) {
@@ -231,7 +233,7 @@ export class RoleComponent implements OnInit {
           const str = this.filter[val];
           const splitted = str.split(',');
           console.log(splitted);
-          this.objectHash[val] = {privilege : splitted };
+          this.objectHash[val] = { privilege: splitted };
         } else {
           this.objectHash[val] = `%${this.filter[val]}%`;
         }
@@ -279,24 +281,24 @@ export class RoleComponent implements OnInit {
         })
       ).subscribe((data: any[]) => {
 
-      data.forEach((d: any) => {
+        data.forEach((d: any) => {
 
-        if (d.functionaries) {
+          if (d.functionaries) {
 
-          const functionalityData = [];
-          d.functionaries.forEach(functionality => functionalityData.push(functionality.name));
-          d.functionaries = functionalityData.toString();
-        }
+            const functionalityData = [];
+            d.functionaries.forEach(functionality => functionalityData.push(functionality.name));
+            d.functionaries = functionalityData.toString();
+          }
 
-        if (d.privileges) {
+          if (d.privileges) {
 
-          const privilegeData = [];
-          d.privileges.forEach(privilegeNames => privilegeData.push(privilegeNames.privilege));
-          d.privileges = privilegeData.toString();
-        }
+            const privilegeData = [];
+            d.privileges.forEach(privilegeNames => privilegeData.push(privilegeNames.privilege));
+            d.privileges = privilegeData.toString();
+          }
+        });
+        this.tableData = data;
       });
-      this.tableData = data;
-    });
   }
 
   resetRoleForm() {
@@ -304,7 +306,7 @@ export class RoleComponent implements OnInit {
     this.filter = {
       roleName_LIKE: '',
       roleDesc_LIKE: '',
-     privileges_FK: '',
+      privileges_FK: '',
     };
     this.objectHash = {};
   }
@@ -327,8 +329,8 @@ export class RoleComponent implements OnInit {
 
 
   add() {
-    this.isDisplayForm = ! this.isDisplayForm;
-    this.isClose = ! this.isClose;
+    this.isDisplayForm = !this.isDisplayForm;
+    this.isClose = !this.isClose;
   }
 
 
@@ -349,8 +351,8 @@ export class RoleComponent implements OnInit {
 
   edit(role) {
 
-    this.isDisplayEditForm = ! this.isDisplayEditForm;
-    this.isCloseEditForm = ! this.isCloseEditForm;
+    this.isDisplayEditForm = !this.isDisplayEditForm;
+    this.isCloseEditForm = !this.isCloseEditForm;
     this.roleData = role;
   }
 

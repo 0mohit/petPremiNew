@@ -14,6 +14,7 @@ import { SharedComponentModule } from '../../components/shared-component.module'
 import { ThemeModule } from './../../../theme/theme.module';
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { EditRoleComponent } from './edit-role/edit-role.component';
+
 const routes: Routes = [
   {
     path: '',
